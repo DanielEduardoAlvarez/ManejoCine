@@ -16,6 +16,8 @@ public class ManejoCine {
      */
     public static void main(String[] args) {
         java.util.Scanner lectura = new java.util.Scanner(System.in);
+        String u [][]=new String [8][20];
+        String i [][]=new String [3][20];
         int w=1;
         char a;
         while(w!=0){
@@ -39,10 +41,10 @@ public class ManejoCine {
                         System.out.println("-----------------------");
                         t=lectura.nextInt();
                         if(t==1){
-                            reservar();                            
+                            reservar(u);                            
                         }
                         else{
-                            reservarb();
+                            reservarb(i);
                         }
                         break;                
                     case 2:
@@ -78,7 +80,7 @@ public class ManejoCine {
             }
         }
     }
-    public static String[][] reservar (){
+    public static String[][] reservar (String Reserva [][]){
         java.util.Scanner lectura = new java.util.Scanner(System.in);
         String General[][]={{"A01","A02","A03","A04","A05","A06","A07","A08","A09","A10","A11","A12","A13","A14","A15","A16","A17","A18","A19","A20"},
                            {"B01","B02","B03","B04","B05","B06","B07","B08","B09","B10","B11","B12","B13","B14","B15","B16","B17","B18","B19","B20"},
@@ -88,7 +90,6 @@ public class ManejoCine {
                            {"F01","F02","F03","F04","F05","F06","F07","F08","F09","F10","F11","F12","F13","F14","F15","F16","F17","F18","F19","F20"},
                            {"G01","G02","G03","G04","G05","G06","G07","G08","G09","G10","G11","G12","G13","G14","G15","G16","G17","G18","G19","G20"},
                            {"H01","H02","H03","H04","H05","H06","H07","H08","H09","H10","H11","H12","H13","H14","H15","H16","H17","H18","H19","H20"}};
-        String Reserva[][]=new String[8][20];            
         String z;            
         System.out.println("-------------------------");
         System.out.println("Seleccionar No Silla");
@@ -108,23 +109,24 @@ public class ManejoCine {
         }        
     return Reserva;
     }
-    public static String[][] reservarb(){
+    public static String[][] reservarb(String Reservap [][]){
         java.util.Scanner lectura = new java.util.Scanner(System.in);
-        int r=0;
-        String Reservap[][]=new String[3][20];
-        if(r==0){
-            String Preferencial[][]={{"I01","I02","I03","I04","I05","I06","I07","I08","I09","I10","I11","I12","I13","I14","I15","I16","I17","I18","I19","I20"},
+        String Preferencial[][]={{"I01","I02","I03","I04","I05","I06","I07","I08","I09","I10","I11","I12","I13","I14","I15","I16","I17","I18","I19","I20"},
                                     {"J01","J02","J03","J04","J05","J06","J07","J08","J09","J10","J11","J12","J13","J14","J15","J16","J17","J18","J19","J20"},
                                     {"K01","K02","K03","K04","K05","K06","K07","K08","K09","K10","K11","K12","K13","K14","K15","K16","K17","K18","K19","K20"}};
-            String y;
-            System.out.println("--------------------------");
-            System.out.println("Seleccionar No Silla");
-            System.out.println("--------------------------");
-            y=lectura.next();
-            for(int i=0;i<3;i++){
-                for(int j=0;j<20;j++){
-                    if(y.equals(Preferencial[i][j])){
+        String y;  
+        System.out.println("--------------------------");
+        System.out.println("Seleccionar No Silla");
+        System.out.println("--------------------------");
+        y=lectura.next();
+        for(int i=0;i<3;i++){
+            for(int j=0;j<20;j++){
+                if(y.equals(Preferencial[i][j])){
+                    if(Reservap[i][j]==null){
                         Reservap[i][j]="Reservado";
+                    }
+                    else{
+                        System.out.println(Reservap[i][j]);
                     }
                 }
             }
